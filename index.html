@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neil-OS™ — 1-Month Renewal Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & JetBrains Mono for that authentic tech-contract vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        rosebrand: {
+                            400: '#fb7185',
+                            500: '#f43f5e',
+                            600: '#e11d48',
+                        },
+                        cinnamon: {
+                            300: '#fcd34d',
+                            400: '#f59e0b',
+                            500: '#d97706',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom base styles & mobile touch optimizations */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100dvh;
+            background-color: #0b0a0e;
+            color: #fafafa;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        /* Ambient warm cinnamon & rose-gold glow background */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 12% 14%, rgba(244, 63, 94, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 88% 25%, rgba(245, 158, 11, 0.14) 0%, transparent 45%),
+                radial-gradient(circle at 50% 88%, rgba(217, 119, 6, 0.15) 0%, transparent 52%),
+                #0b0a0e;
+            pointer-events: none;
+        }
+
+        /* Subtle floating ambient particles */
+        .ambient-orb {
+            position: fixed;
+            border-radius: 9999px;
+            filter: blur(42px);
+            opacity: 0.35;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 11s ease-in-out infinite alternate;
+        }
+        @keyframes floatOrb {
+            0% { transform: translateY(0px) translateX(0px) scale(1); }
+            100% { transform: translateY(-22px) translateX(14px) scale(1.08); }
+        }
+
+        /* Glassmorphic Card */
+        .glass-card {
+            background: rgba(24, 22, 28, 0.80);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(251, 191, 36, 0.14);
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.72),
+                0 0 40px -15px rgba(244, 63, 94, 0.18);
+        }
+
+        /* Custom Toggle Switch */
+        .clause-toggle {
+            appearance: none;
+            width: 48px;
+            height: 28px;
+            background: #27272a;
+            border-radius: 999px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            flex-shrink: 0;
+        }
+
+        .clause-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 20px;
+            height: 20px;
+            background: #a1a1aa;
+            border-radius: 50%;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+        }
+
+        .clause-toggle:checked {
+            background: linear-gradient(135deg, #f43f5e, #d97706);
+            border-color: #fbbf24;
+        }
+
+        .clause-toggle:checked::after {
+            transform: translateX(20px);
+            background: #ffffff;
+        }
+
+        /* Shake animation when trying to submit incomplete form */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+        .animate-shake {
+            animation: shake 0.38s ease-in-out;
+        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom base styles & mobile touch optimizations */
+        * {
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100dvh;
+            background-color: #09090b;
+            color: #fafafa;
+            overflow-x: hidden;
+            touch-action: manipulation;
+        }
+
+        /* Ambient romantic glow background */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background: 
+                radial-gradient(circle at 15% 15%, rgba(244, 63, 94, 0.16) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(168, 85, 247, 0.14) 0%, transparent 50%),
+                #09090b;
+            pointer-events: none;
+        }
+
+        /* Glassmorphic Card */
+        .glass-card {
+            background: rgba(24, 24, 27, 0.78);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.65);
+        }
+
+        /* Custom Toggle Switch */
+        .clause-toggle {
+            appearance: none;
+            width: 46px;
+            height: 26px;
+            background: #27272a;
+            border-radius: 999px;
+            position: relative;
+            cursor: pointer;
+            transition: background 0.25s ease, border-color 0.25s ease;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            flex-shrink: 0;
+        }
+
+        .clause-toggle::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: #a1a1aa;
+            border-radius: 50%;
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.25s ease;
+        }
+
+        .clause-toggle:checked {
+            background: #f43f5e;
+            border-color: #fb7185;
+        }
+
+        .clause-toggle:checked::after {
+            transform: translateX(20px);
+            background: #ffffff;
+        }
+
+        /* Shake animation when trying to submit incomplete form */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-6px); }
+            40% { transform: translateX(6px); }
+            60% { transform: translateX(-4px); }
+            80% { transform: translateX(4px); }
+        }
+        .animate-shake {
+            animation: shake 0.35s ease-in-out;
+        }
+
+        /* Smooth entrance for screens */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Ticket perforated edge effect */
+        .ticket-divider {
+            border-top: 2px dashed rgba(255, 255, 255, 0.14);
+            position: relative;
+        }
+        .ticket-divider::before,
+        .ticket-divider::after {
+            content: '';
+            position: absolute;
+            top: -11px;
+            width: 20px;
+            height: 20px;
+            background-color: #131316;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .ticket-divider::before { left: -27px; }
+        .ticket-divider::after { right: -27px; }
+
+        /* Confetti Canvas */
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center px-4 py-6 sm:py-10 selection:bg-rose-500 selection:text-white">
+
+    <!-- Ambient Glow & Floating Orbs Layer -->
+    <div class="ambient-bg"></div>
+    <div class="ambient-orb w-44 h-44 bg-rose-500/30 top-10 -left-10"></div>
+    <div class="ambient-orb w-52 h-52 bg-amber-500/25 bottom-12 -right-12" style="animation-delay: -5s;"></div>
+
+    <!-- Full-screen Confetti Overlay -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Toast Notification Banner (used instead of alert) -->
+    <div id="toast-banner" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform -translate-y-2 w-[92%] max-w-sm">
+        <div class="bg-zinc-900/95 border border-amber-400/40 text-zinc-100 text-xs sm:text-sm font-medium px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2.5 backdrop-blur-md">
+            <span id="toast-emoji" class="text-base">👑</span>
+            <span id="toast-text">System message</span>
+        </div>
+    </div>
+
+    <!-- MAIN CONTAINER (max-w 480px) -->
+    <main class="relative z-10 w-full max-w-[480px] mx-auto">
+
+        <!-- ========================================================= -->
+        <!-- SCREEN 1: NEIL-OS™ 1-MONTH RENEWAL PORTAL                 -->
+        <!-- ========================================================= -->
+        <section id="contract-screen" class="glass-card rounded-3xl p-5 sm:p-7 animate-fade-up">
+            
+            <!-- Top Official System Badge -->
+            <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-rose-500/20 to-amber-500/20 border border-amber-400/30">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-400"></span>
+                    </span>
+                    <span class="font-mono text-[9.5px] sm:text-[11px] font-bold tracking-wider text-amber-200 uppercase">
+                        Official Relationship Governance • Matriarchy Edition
+                    </span>
+                </div>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <div class="flex items-center gap-2 text-xs font-mono text-rose-400 font-semibold mb-1">
+                <span>NEIL-OS™ v1.04</span>
+                <span>•</span>
+                <span>EST. OCT 17, 2026</span>
+            </div>
+            <h1 class="text-2xl sm:text-[26px] font-extrabold tracking-tight text-white leading-tight">
+                1-Month Subscription Renewal
+            </h1>
+            <p class="text-xs sm:text-sm text-zinc-400 mt-1.5 leading-relaxed">
+                Congratulations on completing your initial 4-week trial! Please ratify the updated Matriarchy Treaty clauses below to unlock Month 2.
+            </p>
+
+            <!-- Account & Milestone Summary Box -->
+            <div class="mt-5 rounded-2xl bg-zinc-900/90 border border-white/10 p-3.5 sm:p-4 space-y-2.5">
+                <div class="flex items-center justify-between text-xs sm:text-sm">
+                    <span class="text-zinc-400">Account Holder</span>
+                    <span class="font-bold text-amber-300 flex items-center gap-1.5">
+                        <span>👑</span> Julia <span class="text-[11px] font-normal text-amber-200/80">(Supreme Ruler)</span>
+                    </span>
+                </div>
+                <div class="flex items-center justify-between text-xs sm:text-sm border-t border-white/5 pt-2.5">
+                    <span class="text-zinc-400">Service Provider</span>
+                    <span class="font-semibold text-zinc-100 text-right">
+                        Neil <span class="text-[11px] font-normal text-zinc-400">(Chief Chef &amp; Bakery Runner)</span>
+                    </span>
+                </div>
+                <div class="border-t border-white/5 pt-2.5">
+                    <div class="flex items-center justify-between text-xs sm:text-sm mb-1">
+                        <span class="text-zinc-400">Milestone Status</span>
+                        <span class="font-mono text-[11px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">
+                            4 Weeks Completed ✓
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-zinc-400 text-right">
+                        Trial Period Passed with Flying Colors — Since Oct 17, 2026
+                    </p>
+                </div>
+            </div>
+
+            <!-- Progress Header for Clauses -->
+            <div class="mt-6 mb-3 flex items-center justify-between">
+                <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-300">
+                    Matriarchy Treaty (<span id="checked-count">0</span>/5 Signed)
+                </h2>
+                <button type="button" id="select-all-btn" class="text-xs font-semibold text-amber-400 hover:text-amber-300 transition underline underline-offset-2 py-1 px-1">
+                    Ratify all
+                </button>
+            </div>
+
+            <!-- Interactive Clauses List (All 5) -->
+            <div id="clauses-container" class="space-y-3">
+                
+                <!-- Section 1.1 -->
+                <label for="clause-1" class="clause-card block rounded-2xl bg-zinc-900/65 hover:bg-zinc-900/95 border border-white/10 p-3.5 sm:p-4 cursor-pointer transition-all select-none">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono text-[11px] font-bold text-amber-400">§1.1</span>
+                                <span class="text-sm font-bold text-zinc-100">The Matriarchy Governance Act</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                User (Julia) retains 100% executive decision-making power. Provider (Neil) acknowledges that this relationship is officially a matriarchy and waives all rights to argue otherwise.
+                            </p>
+                        </div>
+                        <input type="checkbox" id="clause-1" class="clause-toggle mt-0.5" data-reaction="Governance structure verified. Long live the Queen 👑">
+                    </div>
+                </label>
+
+                <!-- Section 2.4 -->
+                <label for="clause-2" class="clause-card block rounded-2xl bg-zinc-900/65 hover:bg-zinc-900/95 border border-white/10 p-3.5 sm:p-4 cursor-pointer transition-all select-none">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono text-[11px] font-bold text-amber-400">§2.4</span>
+                                <span class="text-sm font-bold text-zinc-100">Blanket &amp; Bed Real Estate Allocation</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Provider accepts that sleeping space will be divided 85% Julia / 15% Neil, and agrees not to file formal complaints when all blankets are annexed at 3:00 AM.
+                            </p>
+                        </div>
+                        <input type="checkbox" id="clause-2" class="clause-toggle mt-0.5" data-reaction="Neil has already ordered an extra backup duvet 🛏️">
+                    </div>
+                </label>
+
+                <!-- Section 3.0 -->
+                <label for="clause-3" class="clause-card block rounded-2xl bg-zinc-900/65 hover:bg-zinc-900/95 border border-white/10 p-3.5 sm:p-4 cursor-pointer transition-all select-none">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono text-[11px] font-bold text-amber-400">§3.0</span>
+                                <span class="text-sm font-bold text-zinc-100">Thermal Shock &amp; Cold Hands Protocol</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                User reserves the unilateral right to slide freezing cold hands directly under Provider’s shirt without prior warning, strictly for entertainment purposes.
+                            </p>
+                        </div>
+                        <input type="checkbox" id="clause-3" class="clause-toggle mt-0.5" data-reaction="Core body temperature dropping... worth it 🥶">
+                    </div>
+                </label>
+
+                <!-- Section 4.2 -->
+                <label for="clause-4" class="clause-card block rounded-2xl bg-zinc-900/65 hover:bg-zinc-900/95 border border-white/10 p-3.5 sm:p-4 cursor-pointer transition-all select-none">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono text-[11px] font-bold text-amber-400">§4.2</span>
+                                <span class="text-sm font-bold text-zinc-100">On-Demand Culinary &amp; Cinnamon Snail SLA</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Provider guarantees rapid bakery deployment for fresh cinnamon snails and on-demand home-cooked meals whenever cravings strike.
+                            </p>
+                        </div>
+                        <input type="checkbox" id="clause-4" class="clause-toggle mt-0.5" data-reaction="Cinnamon snail radar set to maximum sensitivity 🥐">
+                    </div>
+                </label>
+
+                <!-- Section 5.8 -->
+                <label for="clause-5" class="clause-card block rounded-2xl bg-zinc-900/65 hover:bg-zinc-900/95 border border-white/10 p-3.5 sm:p-4 cursor-pointer transition-all select-none">
+                    <div class="flex items-start justify-between gap-3">
+                        <div class="space-y-1">
+                            <div class="flex items-center gap-2">
+                                <span class="font-mono text-[11px] font-bold text-amber-400">§5.8</span>
+                                <span class="text-sm font-bold text-zinc-100">Joint Travel &amp; Passport Expansion</span>
+                            </div>
+                            <p class="text-xs text-zinc-400 leading-relaxed">
+                                Following successful deployment in Amsterdam, both parties commit to future weekend getaways, questionable navigation, and elite snack stops.
+                            </p>
+                        </div>
+                        <input type="checkbox" id="clause-5" class="clause-toggle mt-0.5" data-reaction="Amsterdam cleared! Next destination loading... ✈️">
+                    </div>
+                </label>
+
+            </div>
+
+            <!-- Live Clause Reaction Pill -->
+            <div id="reaction-box" class="mt-3.5 min-h-[34px] px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center">
+                <p id="reaction-text" class="text-xs text-amber-200/90 font-medium text-center transition-opacity duration-200">
+                    Sign all 5 sections of the Matriarchy Treaty above ✨
+                </p>
+            </div>
+
+            <!-- Action Buttons Area -->
+            <div class="mt-4 space-y-3 relative">
+                <!-- Primary Accept Button -->
+                <button type="button" id="accept-btn" class="w-full py-4 px-5 rounded-2xl font-bold text-sm sm:text-base text-white bg-gradient-to-r from-rose-500 via-pink-600 to-amber-600 shadow-lg shadow-rose-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2 opacity-65">
+                    <span>Accept &amp; Lock In Month 2</span>
+                    <span>✨</span>
+                </button>
+
+                <!-- Secondary Runaway Decline Button -->
+                <div class="flex justify-center pt-1 min-h-[48px]">
+                    <button type="button" id="decline-btn" class="py-3 px-6 rounded-xl text-xs font-medium text-zinc-400 bg-zinc-800/85 border border-white/10 hover:text-zinc-200 transition-transform duration-150 select-none">
+                        Decline / Cancel
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ========================================================= -->
+        <!-- SCREEN 2: MONTH 2 VIP PASS & VOUCHER PICKER               -->
+        <!-- ========================================================= -->
+        <section id="success-screen" class="hidden glass-card rounded-3xl p-5 sm:p-7 animate-fade-up">
+            
+            <!-- Success Header -->
+            <div class="text-center">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-rose-500 to-amber-500 text-2xl shadow-lg shadow-amber-500/25 mb-3">
+                    👑
+                </div>
+                <div class="inline-block px-3 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono text-[11px] font-bold uppercase tracking-wider mb-2">
+                    Month 2 Locked In • Long Live The Matriarchy
+                </div>
+                <h2 class="text-2xl font-extrabold text-white tracking-tight">
+                    Renewal Complete, Julia!
+                </h2>
+                <p class="text-xs sm:text-sm text-zinc-400 mt-1 leading-relaxed">
+                    Neil is officially locked in for Month 2. Tap one or more perks below to redeem immediately on your <span class="text-amber-300 font-semibold">Month 2 VIP Pass</span>.
+                </p>
+            </div>
+
+            <!-- Digital Month 2 VIP Pass -->
+            <div class="mt-5 rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-900 to-amber-950/30 border border-amber-400/30 p-4 sm:p-5 shadow-xl relative overflow-hidden">
+                <!-- Header Row -->
+                <div class="flex items-center justify-between pb-3">
+                    <div>
+                        <span class="font-mono text-[10px] uppercase tracking-widest text-amber-400 block">Issued To: Julia • From: Neil</span>
+                        <h3 class="text-base sm:text-lg font-extrabold text-white">Month 2 VIP Pass</h3>
+                    </div>
+                    <span class="font-mono text-xs font-bold px-2.5 py-1 rounded-lg bg-amber-400/10 border border-amber-400/30 text-amber-300">
+                        #NEIL-M02
+                    </span>
+                </div>
+
+                <!-- Perforated Ticket Divider -->
+                <div class="ticket-divider my-2"></div>
+
+                <!-- Interactive Multi-Select Perk Picker -->
+                <div class="pt-2">
+                    <div class="flex items-center justify-between mb-2.5">
+                        <p class="text-xs font-semibold text-zinc-200">
+                            Select perks to redeem (tap 1 or more):
+                        </p>
+                        <span id="selected-perk-count" class="font-mono text-[11px] text-amber-300 font-bold">
+                            1 selected
+                        </span>
+                    </div>
+
+                    <div id="perk-pills" class="grid grid-cols-1 gap-2.5">
+                        <button type="button" data-perk="🥐 Emergency Cinnamon Snail Delivery (Anytime)" class="perk-btn text-left px-3.5 py-3 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-gradient-to-r from-rose-500/20 to-amber-500/20 border-amber-400 text-white flex items-center justify-between gap-2">
+                            <span>🥐 Emergency Cinnamon Snail Delivery (Anytime)</span>
+                            <span class="check-dot text-amber-300 font-bold">✓</span>
+                        </button>
+
+                        <button type="button" data-perk="🍝 Custom Home-Cooked Dinner of Your Choice" class="perk-btn text-left px-3.5 py-3 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-zinc-800/75 border-white/10 text-zinc-300 hover:border-white/25 flex items-center justify-between gap-2">
+                            <span>🍝 Custom Home-Cooked Dinner of Your Choice</span>
+                            <span class="check-dot hidden text-amber-300 font-bold">✓</span>
+                        </button>
+
+                        <button type="button" data-perk="✈️ Mystery Weekend Trip Planning Session" class="perk-btn text-left px-3.5 py-3 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-zinc-800/75 border-white/10 text-zinc-300 hover:border-white/25 flex items-center justify-between gap-2">
+                            <span>✈️ Mystery Weekend Trip Planning Session</span>
+                            <span class="check-dot hidden text-amber-300 font-bold">✓</span>
+                        </button>
+
+                        <button type="button" data-perk="🔥 Human Hand-Warmer Pass (Zero Complaints)" class="perk-btn text-left px-3.5 py-3 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-zinc-800/75 border-white/10 text-zinc-300 hover:border-white/25 flex items-center justify-between gap-2">
+                            <span>🔥 Human Hand-Warmer Pass (Zero Complaints)</span>
+                            <span class="check-dot hidden text-amber-300 font-bold">✓</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Voucher Fine Print -->
+                <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-zinc-400 font-mono">
+                    <span>AUTHORITY: MATRIARCHY</span>
+                    <span>COST: €0.00</span>
+                </div>
+            </div>
+
+            <!-- Send Receipt / Share Actions -->
+            <div class="mt-5 space-y-2.5">
+                <button type="button" id="copy-receipt-btn" class="w-full py-4 px-5 rounded-2xl font-bold text-sm text-white bg-gradient-to-r from-rose-500 via-pink-600 to-amber-600 hover:brightness-110 shadow-lg shadow-rose-500/25 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+                    <span>📋</span>
+                    <span id="copy-btn-label">Copy Receipt to Send to Neil</span>
+                </button>
+
+                <button type="button" id="replay-confetti-btn" class="w-full py-2.5 px-4 rounded-xl text-xs font-medium text-zinc-400 hover:text-zinc-200 bg-zinc-900/70 border border-white/10 transition">
+                    🎉 Launch More Confetti
+                </button>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Hidden textarea for reliable iFrame/mobile clipboard fallback -->
+    <textarea id="clipboard-helper" class="sr-only" aria-hidden="true"></textarea>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM ELEMENTS ---
+            const contractScreen = document.getElementById('contract-screen');
+            const successScreen = document.getElementById('success-screen');
+            const checkboxes = Array.from(document.querySelectorAll('.clause-toggle'));
+            const checkedCountEl = document.getElementById('checked-count');
+            const selectAllBtn = document.getElementById('select-all-btn');
+            const reactionText = document.getElementById('reaction-text');
+            const acceptBtn = document.getElementById('accept-btn');
+            const declineBtn = document.getElementById('decline-btn');
+            
+            // Voucher & Receipt elements
+            const perkButtons = Array.from(document.querySelectorAll('.perk-btn'));
+            const selectedPerkCountEl = document.getElementById('selected-perk-count');
+            const copyReceiptBtn = document.getElementById('copy-receipt-btn');
+            const copyBtnLabel = document.getElementById('copy-btn-label');
+            const replayConfettiBtn = document.getElementById('replay-confetti-btn');
+            const clipboardHelper = document.getElementById('clipboard-helper');
+
+            // Toast elements
+            const toastBanner = document.getElementById('toast-banner');
+            const toastEmoji = document.getElementById('toast-emoji');
+            const toastText = document.getElementById('toast-text');
+            let toastTimeout;
+
+            // State: Set of selected perks (default first perk selected)
+            const selectedPerks = new Set(["🥐 Emergency Cinnamon Snail Delivery (Anytime)"]);
+            let dodgeCount = 0;
+            let declineScale = 1;
+
+            // --- HELPER: NON-BLOCKING TOAST NOTIFICATION ---
+            function showToast(emoji, message) {
+                clearTimeout(toastTimeout);
+                toastEmoji.textContent = emoji;
+                toastText.textContent = message;
+                toastBanner.classList.remove('opacity-0', '-translate-y-2');
+                toastBanner.classList.add('opacity-100', 'translate-y-0');
+
+                toastTimeout = setTimeout(() => {
+                    toastBanner.classList.remove('opacity-100', 'translate-y-0');
+                    toastBanner.classList.add('opacity-0', '-translate-y-2');
+                }, 2800);
+            }
+
+            // --- 1. CLAUSES & VALIDATION LOGIC (5 CLAUSES) ---
+            function updateClauseProgress(latestReaction = null) {
+                const totalClauses = checkboxes.length;
+                const checkedCount = checkboxes.filter(cb => cb.checked).length;
+                checkedCountEl.textContent = checkedCount;
+
+                if (latestReaction) {
+                    reactionText.textContent = latestReaction;
+                } else if (checkedCount === totalClauses) {
+                    reactionText.textContent = "✅ Matriarchy Treaty ratified! Ready for Month 2.";
+                } else {
+                    const remaining = totalClauses - checkedCount;
+                    reactionText.textContent = `${remaining} section${remaining > 1 ? 's' : ''} of the Matriarchy Treaty remaining...`;
+                }
+
+                // Visual state of primary Accept button
+                if (checkedCount === totalClauses) {
+                    acceptBtn.classList.remove('opacity-65');
+                    acceptBtn.classList.add('ring-2', 'ring-amber-400/60');
+                } else {
+                    acceptBtn.classList.add('opacity-65');
+                    acceptBtn.classList.remove('ring-2', 'ring-amber-400/60');
+                }
+            }
+
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    // Remove any missing-highlight border if present
+                    const card = cb.closest('.clause-card');
+                    if (card) card.classList.remove('border-rose-500', 'animate-shake');
+
+                    if (cb.checked) {
+                        updateClauseProgress(cb.dataset.reaction);
+                    } else {
+                        updateClauseProgress("🤨 Hey, you unchecked a clause of the Matriarchy Treaty!");
+                    }
+                });
+            });
+
+            // Quick "Ratify all" helper link
+            selectAllBtn.addEventListener('click', () => {
+                checkboxes.forEach(cb => {
+                    cb.checked = true;
+                    const card = cb.closest('.clause-card');
+                    if (card) card.classList.remove('border-rose-500', 'animate-shake');
+                });
+                updateClauseProgress("⚡ Executive decree! All 5 sections ratified.");
+            });
+
+            // Handle Accept button click
+            acceptBtn.addEventListener('click', () => {
+                const uncheckedBoxes = checkboxes.filter(cb => !cb.checked);
+                if (uncheckedBoxes.length > 0) {
+                    // Shake button and gently shake unchecked cards
+                    acceptBtn.classList.remove('animate-shake');
+                    void acceptBtn.offsetWidth;
+                    acceptBtn.classList.add('animate-shake');
+
+                    uncheckedBoxes.forEach(cb => {
+                        const card = cb.closest('.clause-card');
+                        if (card) {
+                            card.classList.remove('animate-shake');
+                            void card.offsetWidth;
+                            card.classList.add('border-rose-500', 'animate-shake');
+                        }
+                    });
+
+                    showToast('👑', 'Sign all 5 sections of the Matriarchy Treaty first!');
+                    return;
+                }
+
+                // Transition to Month 2 VIP Pass screen
+                contractScreen.classList.add('hidden');
+                if (dodgeCount > 0) {
+                    declineBtn.classList.add('hidden');
+                }
+                successScreen.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                launchConfetti();
+            });
+
+            // --- 2. RUNAWAY "DECLINE" BUTTON LOGIC ---
+            const dodgePrompts = [
+                "Error 403: Matriarchy overrides cancellation",
+                "Nice try, Julia 👀",
+                "Who else is getting you cinnamon snails?",
+                "Button temporarily out of service",
+                "Amsterdam was too good to quit"
+            ];
+
+            function dodgeButton(e) {
+                if (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+
+                // Promote to fixed positioning on first dodge so it floats cleanly within viewport
+                if (dodgeCount === 0) {
+                    const rect = declineBtn.getBoundingClientRect();
+                    declineBtn.style.position = 'fixed';
+                    declineBtn.style.left = `${rect.left}px`;
+                    declineBtn.style.top = `${rect.top}px`;
+                    declineBtn.style.zIndex = '40';
+                    declineBtn.style.margin = '0';
+                }
+
+                // Cycle through Julia-specific dodge prompts
+                const prompt = dodgePrompts[dodgeCount % dodgePrompts.length];
+                declineBtn.textContent = prompt;
+                dodgeCount++;
+                declineScale = Math.max(0.82, 1 - dodgeCount * 0.025);
+
+                // Calculate safe screen boundaries with generous padding
+                const padding = 16;
+                const vw = window.innerWidth;
+                const vh = window.innerHeight;
+                const btnWidth = Math.min(declineBtn.offsetWidth || 220, vw - padding * 2);
+                const btnHeight = declineBtn.offsetHeight || 44;
+
+                const minX = padding;
+                const maxX = Math.max(padding, vw - btnWidth - padding);
+                const minY = padding + 48; // avoid top toast banner
+                const maxY = Math.max(minY, vh - btnHeight - padding);
+
+                const randomX = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+                const randomY = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+
+                declineBtn.style.left = `${randomX}px`;
+                declineBtn.style.top = `${randomY}px`;
+                declineBtn.style.transform = `scale(${declineScale})`;
+            }
+
+            // Trigger on touchstart (mobile), mouseover (desktop), and click
+            declineBtn.addEventListener('touchstart', dodgeButton, { passive: false });
+            declineBtn.addEventListener('mouseover', dodgeButton);
+            declineBtn.addEventListener('click', dodgeButton);
+
+            // Keep runaway button inside screen if device rotates or resizes
+            window.addEventListener('resize', () => {
+                if (dodgeCount > 0 && !contractScreen.classList.contains('hidden')) {
+                    dodgeButton();
+                }
+            });
+
+            // --- 3. MULTI-SELECT VIP PERK PICKER & RECEIPT COPY ---
+            function updatePerkCounter() {
+                const count = selectedPerks.size;
+                selectedPerkCountEl.textContent = count === 0 ? "None selected" : `${count} selected`;
+            }
+
+            perkButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const perk = btn.dataset.perk;
+                    const checkDot = btn.querySelector('.check-dot');
+
+                    if (selectedPerks.has(perk)) {
+                        // Deselect if more than 1 is selected, or allow toggling freely
+                        selectedPerks.delete(perk);
+                        btn.classList.remove('bg-gradient-to-r', 'from-rose-500/20', 'to-amber-500/20', 'border-amber-400', 'text-white');
+                        btn.classList.add('bg-zinc-800/75', 'border-white/10', 'text-zinc-300');
+                        checkDot.classList.add('hidden');
+                    } else {
+                        selectedPerks.add(perk);
+                        btn.classList.remove('bg-zinc-800/75', 'border-white/10', 'text-zinc-300');
+                        btn.classList.add('bg-gradient-to-r', 'from-rose-500/20', 'to-amber-500/20', 'border-amber-400', 'text-white');
+                        checkDot.classList.remove('hidden');
+                    }
+                    updatePerkCounter();
+                });
+            });
+
+            copyReceiptBtn.addEventListener('click', () => {
+                const perksArray = Array.from(selectedPerks);
+                const perksText = perksArray.length > 0 
+                    ? perksArray.join(' + ') 
+                    : 'All of the above (Supreme Ruler privilege)';
+
+                const receiptMessage = `Official Notice from the Matriarchy 👑: Month 2 of Neil is officially renewed! Redeeming: ${perksText} ✨`;
+
+                // Reliable copy using textarea + execCommand for mobile & iFrames
+                clipboardHelper.value = receiptMessage;
+                clipboardHelper.select();
+                clipboardHelper.setSelectionRange(0, 99999);
+
+                let copied = false;
+                try {
+                    copied = document.execCommand('copy');
+                } catch (err) {
+                    copied = false;
+                }
+
+                if (copied) {
+                    copyBtnLabel.textContent = "Copied! Paste it to Neil 💬";
+                    showToast('💬', 'Receipt copied! Paste it in your chat with Neil.');
+                    setTimeout(() => {
+                        copyBtnLabel.textContent = "Copy Receipt to Send to Neil";
+                    }, 3800);
+                } else {
+                    showToast('👑', 'Screenshot your VIP Pass & send it to Neil!');
+                }
+            });
+
+            // --- 4. CANVAS CONFETTI (HEARTS, SPARKLES & WARM GOLD/ROSE) ---
+            const canvas = document.getElementById('confetti-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            let animationId = null;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            const colors = ['#f43f5e', '#fb7185', '#f59e0b', '#fbbf24', '#fcd34d', '#ffffff'];
+
+            function createParticles(count = 110) {
+                for (let i = 0; i < count; i++) {
+                    particles.push({
+                        x: canvas.width * (0.2 + Math.random() * 0.6),
+                        y: canvas.height * 0.45,
+                        vx: (Math.random() - 0.5) * 14,
+                        vy: (Math.random() - 1.15) * 15,
+                        size: Math.random() * 8 + 6,
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        rotation: Math.random() * Math.PI * 2,
+                        rotationSpeed: (Math.random() - 0.5) * 0.15,
+                        shape: Math.random() > 0.55 ? 'heart' : (Math.random() > 0.4 ? 'sparkle' : 'rect'),
+                        opacity: 1
+                    });
+                }
+            }
+
+            function drawHeart(ctx, x, y, size, color, rotation, opacity) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(rotation);
+                ctx.globalAlpha = opacity;
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                const topCurveHeight = size * 0.3;
+                ctx.moveTo(0, topCurveHeight);
+                ctx.bezierCurveTo(0, 0, -size / 2, 0, -size / 2, topCurveHeight);
+                ctx.bezierCurveTo(-size / 2, (size + topCurveHeight) / 2, 0, (size + topCurveHeight) / 1.4, 0, size);
+                ctx.bezierCurveTo(0, (size + topCurveHeight) / 1.4, size / 2, (size + topCurveHeight) / 2, size / 2, topCurveHeight);
+                ctx.bezierCurveTo(size / 2, 0, 0, 0, 0, topCurveHeight);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function drawSparkle(ctx, x, y, size, color, rotation, opacity) {
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(rotation);
+                ctx.globalAlpha = opacity;
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                for (let i = 0; i < 4; i++) {
+                    ctx.rotate(Math.PI / 2);
+                    ctx.lineTo(0, -size * 0.85);
+                    ctx.quadraticCurveTo(0, 0, size * 0.85, 0);
+                }
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+            }
+
+            function animateConfetti() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                for (let i = particles.length - 1; i >= 0; i--) {
+                    const p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.32; // gravity
+                    p.vx *= 0.985; // air drag
+                    p.rotation += p.rotationSpeed;
+                    p.opacity -= 0.008;
+
+                    if (p.opacity <= 0 || p.y > canvas.height + 30) {
+                        particles.splice(i, 1);
+                        continue;
+                    }
+
+                    if (p.shape === 'heart') {
+                        drawHeart(ctx, p.x, p.y, p.size, p.color, p.rotation, p.opacity);
+                    } else if (p.shape === 'sparkle') {
+                        drawSparkle(ctx, p.x, p.y, p.size, p.color, p.rotation, p.opacity);
+                    } else {
+                        ctx.save();
+                        ctx.translate(p.x, p.y);
+                        ctx.rotate(p.rotation);
+                        ctx.globalAlpha = p.opacity;
+                        ctx.fillStyle = p.color;
+                        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
+                        ctx.restore();
+                    }
+                }
+
+                if (particles.length > 0) {
+                    animationId = requestAnimationFrame(animateConfetti);
+                } else {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            }
+
+            function launchConfetti() {
+                createParticles(110);
+                if (!animationId) {
+                    animateConfetti();
+                }
+            }
+
+            replayConfettiBtn.addEventListener('click', launchConfetti);
+        });
+    </script>
+</body>
+</html>
